@@ -1,11 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>我的第一个仓库</h1>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <style>
+        .banner{
+            width: 1000px;
+            height: 307px;
+            position: relative;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        .banner>.silde{
+            width: 600px;
+            position:absolute;
+            left:0;
+            transition:left 0.5s;
+        }
+       /* .banner>.silde:nth-child(2){
+            left:200px;
+        }
+        .banner>.silde:nth-child(3){
+            left:400px;
+        }
+        .banner>.silde:nth-child(4){
+            left:600px;
+        }
+        .banner>.silde:nth-child(5){
+            left:800px;
+        }*/
+        .banner>.silde>div{
+            width: 100%;
+            position:absolute;
+            left:0;
+            top:0;
+            background-color:rgba(0, 0, 0, 0.5);
+            bottom:0;
+        }
+        .banner>.silde:hover>div{
+            background-color: rgba(0, 0, 0, 0.0);
+        }
+        .banner>.silde>img{
+            width: 100%;
+            display: block;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="banner">
+     <div class="silde">
+         <div></div>
+         <img src="images/slide-1.jpg" alt="" />
+     </div>
+     <div class="silde">
+         <div></div>
+         <img src="images/slide-2.jpg" alt="" />
+     </div>
+     <div class="silde">
+         <div></div>
+         <img src="images/slide-3.jpg" alt="" />
+     </div>
+     <div class="silde">
+         <div></div>
+         <img src="images/slide-4.jpg" alt="" />
+     </div>
+     <div class="silde">
+         <div></div>
+         <img src="images/slide-5.jpg" alt="" />
+     </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+            var slideNum =$('.banner>.silde').length//5
+            var slidewidth =$('.banner>.silde').width()//600
+            var itemwidth =($('.banner').width()-slidewidth)/(slideNum-1)//100
+            var defaultleft = $('.banner').width()/slideNum//200
+            for(var i=0;i<slideNum;i++){
+                $('.banner>.silde').eq(i).css('left',i*defaultleft)
+            }
+        $('.banner>.silde').hover(function() {
+            var ind =$(this).index()
+            for(var i=0;i<slideNum;i++){
+                if(i<=ind){
+                    $('.banner>.silde').eq(i).css('left',i*itemwidth)
+                }else{
+                    $('.banner>.silde').eq(i).css('left',(i-1)*itemwidth+slidewidth)
+                }
+            }
+        }, function() {
+            for(var i=0;i<slideNum;i++){
+                $('.banner>.silde').eq(i).css('left',i*defaultleft)
+            }
+
+                });
+
+
+
+    // var num=-100
+    //     $('.banner>.silde').hover(function() {
+    //         var ind=$(this).index();
+    //         num=-100
+    //         for (var i = 0; i < 5; i++) {
+    //         if (ind+1===i) {
+    //             num=num+600
+    //         }else{
+    //             num=num+100
+    //         }
+    //         $('.banner>.silde:eq('+i+')').css('left',num+'px');
+    //         }
+    //     }, function() {
+    //         num=-200
+    //         for (var i =0; i <5; i++) {
+    //             num=num+200
+    //             $('.silde:eq('+i+')').css('left',num+'px');
+    //         }
+
+    //     });
+
+
+
+    </script>
+    </body>
 </html>
